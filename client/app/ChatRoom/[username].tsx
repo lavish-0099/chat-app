@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, Button, ScrollView, StyleSheet } from 'react-native';
 import io from 'socket.io-client';
 
-// ✅ Define the Message interface
+
 interface Message {
   text: string;
   time: string;
 }
 
-// ✅ Replace with your actual IP and port
+
 const socket = io("http://192.168.1.40:3000");
 import { useLocalSearchParams } from 'expo-router';
 
@@ -32,7 +32,7 @@ export default function ChatRoom() {
   const sendMessage = () => {
     if (message.trim()) {
       const msg: Message = {
-        text: `${username}: ${message}`, // ✅ Prefix message with username
+        text: `${username}: ${message}`,
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       };
       socket.emit('chat message', msg);
